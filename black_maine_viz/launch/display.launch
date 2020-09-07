@@ -2,7 +2,7 @@
 <launch>  
   <arg name="type" default="view"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find phantomx_arm_viz)/viz/$(arg type).rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find black_maine_viz)/viz/$(arg type).rviz" />
 
   <node name="rqt_runtime_monitor" pkg="rqt_runtime_monitor" type="rqt_runtime_monitor" />
 </launch>

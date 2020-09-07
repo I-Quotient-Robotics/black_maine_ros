@@ -4,9 +4,10 @@
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <!-- Include accessories -->
-  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
-  <xacro:include filename="$(find black_maine_description)/urdf/accessories/realsense_d435.urdf.xacro" />
   <xacro:include filename="$(find ydlidar_ros)/urdf/ydlidar.urdf" />
+  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
+  <xacro:include filename="$(find black_maine_description)/urdf/accessories/pincher.urdf.xacro" />
+  <xacro:include filename="$(find black_maine_description)/urdf/accessories/realsense_d435.urdf.xacro" />
 
   <!-- base -->
   <xacro:kobuki/>
@@ -49,11 +50,12 @@
     <origin xyz="0.12975 0 0.30487" rpy="0 ${M_PI/3} 0"/>
   </xacro:sensor_d435>
 
-
-  <!-- <xacro:ydlidar_ros /> -->
   <joint name="ydlidar_joint" type="fixed">
     <origin xyz="0 0 0.075" rpy="${M_PI} 0 ${M_PI/3*2}" />
     <parent link="body_link"/>
     <child link="base_laser"/>
   </joint>
+
+  <xacro:phantomx_pincher_arm parent="arm_base_link">
+  </xacro:phantomx_pincher_arm>
 </robot>
