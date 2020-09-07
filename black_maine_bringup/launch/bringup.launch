@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+
+  <arg name="teleop" default="true"/>
+
+  <!-- Robot description -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find black_maine_description)/urdf/black_maine_robot.urdf.xacro" />
+
+  <!-- Robot base -->
+  <include file="$(find black_maine_bringup)/launch/include/base.launch.xml">
+    <arg name="log_type" value="$(arg log_type)"/>
+  </include>
+
+  <group if="$(arg teleop)">
+    <include file="$(find black_maine_bringup)/launch/include/teleop.launch.xml">
+      <arg name="log_type" value="$(arg log_type)"/>
+    </include>
+  </group>
+</launch>
