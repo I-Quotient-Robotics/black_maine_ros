@@ -24,8 +24,8 @@
     </visual>
   </link>
   <joint name="body_joint" type="fixed">
-    <origin xyz="0 0 0.075" rpy="0 0 0" />
-    <parent link="base_link"/>
+    <origin xyz="0 0 0.0884" rpy="0 0 0" />
+    <parent link="base_footprint"/>
     <child link="body_link"/>
   </joint>
 

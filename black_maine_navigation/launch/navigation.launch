@@ -4,19 +4,19 @@
   <arg name="log_type" default="screen"/>
   
   <!-- Arguments -->
-  <arg name="map_file" default="$(find black_maine_navigation)/maps/dock_test.yaml"/>
+  <arg name="map_file" default="$(find black_maine_navigation)/maps/shoukai_4_part.yaml"/>
   <arg name="rviz" default="false"/>
 
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" output="$(arg log_type)" />
 
   <!-- AMCL -->
-  <include file="$(find black_maine_navigation)/launch/amcl.launch.xml" >
+  <include file="$(find black_maine_navigation)/launch/include/amcl.launch.xml" >
     <arg name="log_type" value="$(arg log_type)"/>
   </include>
 
   <!-- move_base -->
-  <include file="$(find black_maine_navigation)/launch/move_base.launch.xml">
+  <include file="$(find black_maine_navigation)/launch/include/move_base.launch.xml">
     <arg name="log_type" value="$(arg log_type)"/>
   </include>
 

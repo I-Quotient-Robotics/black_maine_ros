@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: black_maine_description
+    relative_path: urdf/black_maine_robot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/black_maine_robot.srdf
+  CONFIG:
+    author_name: Ye Tian
+    author_email: ye.tian@iquotient-robotics.com
+    generated_timestamp: 1599554692
