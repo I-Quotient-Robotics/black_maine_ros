@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<launch>
+
+  <arg name="log_type" default="screen"/>
+
+  <!-- Arguments -->
+  <arg name="scan_topic"     default="scan"/>
+
+  <!-- AMCL -->
+  <node pkg="amcl" type="amcl" name="amcl" output="$(arg log_type)">
+    <rosparam file="$(find black_maine_navigation)/config/amcl.yaml" command="load" />
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+
+</launch>
