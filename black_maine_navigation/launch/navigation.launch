@@ -4,7 +4,7 @@
   <arg name="log_type" default="screen"/>
   
   <!-- Arguments -->
-  <arg name="map_file" default="$(find black_maine_navigation)/maps/shoukai_4_part.yaml"/>
+  <arg name="map_file" default="$(find black_maine_navigation)/maps/caster.yaml"/>
   <arg name="rviz" default="false"/>
 
   <!-- Map server -->
