@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+
+  <include file="$(find black_maine_bringup)/launch/bringup_respawn.launch" />
+
+  <include file="$(find black_maine_navigation)/launch/navigation.launch" />
+
+  <rosparam file="$(find black_maine_app)/config/black_maine_app.yaml" command="load" />
+  <node pkg="black_maine_app" type="distribution_server" name="distribution_server" output="$(arg log_type)" respawn="true"/>
+
+  <include file="$(find black_maine_app)/launch/mqtt_listener.launch" />
+  <include file="$(find black_maine_app)/launch/amcl_init_pose.launch" />
+
+</launch>

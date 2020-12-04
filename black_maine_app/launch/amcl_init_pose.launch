@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+  <node pkg="black_maine_app" type="amcl_initialpose.py" name="amcl_init_pose" output="$(arg log_type)" respawn="true">
+    <param name="position_x" value="0.0"/>
+    <param name="position_y" value="0.0"/>
+    <param name="orientation_z" value="0.0"/>
+    <param name="orientation_z" value="1.0"/>
+  </node>
+</launch>

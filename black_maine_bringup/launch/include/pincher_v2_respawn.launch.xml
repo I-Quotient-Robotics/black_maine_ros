@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<launch>
+  <node name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py" output="screen" respawn="true">
+    <rosparam file="$(find phantomx_arm_controller)/config/pincher/dynamixel_controller.yaml" command="load" />
+  </node>
+
+  <!-- Load controller configuration to parameter server -->
+  <rosparam file="$(find phantomx_arm_controller)/config/pincher/controller_v2.yaml" command="load" />    
+
+  <!-- start specified joint controllers -->
+  <node name="pincher_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+    args="--manager=dxl_manager
+          --port=dxl_bus
+          arm_1_joint
+          arm_2_joint
+          arm_3_joint
+          arm_4_joint
+          gripper_revolute_joint"
+    output="screen"/>
+
+  <node name="pincher_controller_spawner_meta" pkg="dynamixel_controllers" type="controller_spawner.py"
+    args="--manager=dxl_manager
+          --type=meta
+          pincher
+          arm_1_joint
+          arm_2_joint
+          arm_3_joint
+          arm_4_joint"
+    output="screen"/>
+
+  <node name="pincher_joint_states_publisher" pkg="phantomx_arm_controller" type="dynamixel_joint_state_publisher.py" output="screen" respawn="true">
+    <param name="rate" value="15" />
+  </node>
+
+  <node name="pincher_gripper_controller" pkg="phantomx_arm_controller" type="dynamixel_gripper_controller.py" output="screen" respawn="true">
+    <param name="rate" value="15"/>
+  </node>
+</launch>

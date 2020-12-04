@@ -7,7 +7,7 @@
   <arg name="scan_topic"     default="scan"/>
 
   <!-- AMCL -->
-  <node pkg="amcl" type="amcl" name="amcl" output="$(arg log_type)">
+  <node pkg="amcl" type="amcl" name="amcl" output="$(arg log_type)" respawn="true">
     <rosparam file="$(find black_maine_navigation)/config/amcl.yaml" command="load" />
     <remap from="scan" to="$(arg scan_topic)"/>
   </node>

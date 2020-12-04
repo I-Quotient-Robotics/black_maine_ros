@@ -4,17 +4,16 @@
   <arg name="log_type" default="screen"/>
   
   <!-- Arguments -->
-  <arg name="map_file" default="$(find black_maine_navigation)/maps/caster.yaml"/>
+  <arg name="map_file" default="$(find black_maine_navigation)/maps/nanhua.yaml"/>
   <arg name="rviz" default="false"/>
 
   <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" output="$(arg log_type)" />
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" output="$(arg log_type)" respawn="true"/>
 
   <!-- AMCL -->
   <include file="$(find black_maine_navigation)/launch/include/amcl.launch.xml" >
     <arg name="log_type" value="$(arg log_type)"/>
   </include>
-
   <!-- move_base -->
   <include file="$(find black_maine_navigation)/launch/include/move_base.launch.xml">
     <arg name="log_type" value="$(arg log_type)"/>
@@ -22,7 +21,7 @@
 
   <!-- rviz -->
   <group if="$(arg rviz)"> 
-    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find caster_viz)/viz/navigation.rviz" output="$(arg log_type)"/>
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find caster_viz)/viz/navigation.rviz" output="$(arg log_type)" respawn="true"/>
   </group>
 
 </launch>

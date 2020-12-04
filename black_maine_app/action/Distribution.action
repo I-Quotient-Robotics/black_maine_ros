@@ -1,0 +1,13 @@
+# Define the goal
+string task_id
+string[] places  #
+string[] confirm_list  #
+---
+# Define the result
+string task_id
+int16 finished_step
+---
+# Define a feedback message
+string goal
+string goal_state
+string task_id

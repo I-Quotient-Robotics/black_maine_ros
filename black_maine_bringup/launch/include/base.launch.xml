@@ -14,7 +14,7 @@
   </node>
 
   <!-- YDLidar driver -->
-  <node name="ydlidar_node" pkg="ydlidar_ros" type="ydlidar_node" output="screen" respawn="false" >
+  <node name="ydlidar_node" pkg="ydlidar_ros" type="ydlidar_node" output="screen" respawn="true" >
     <param name="port"              type="string" value="/dev/ydlidar" />  
     <param name="baudrate"          type="int"    value="230400" />  
     <param name="frame_id"          type="string" value="laser_frame" />
@@ -30,7 +30,7 @@
     <param name="samp_rate"    type="int"    value="9" />
   </node>
 
-  <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+  <include file="$(find black_maine_bringup)/launch/include/realsense_respawn.launch.xml">
     <arg name="tf_prefix"             value="camera" />
     <arg name="initial_reset"         value="false" />
     <arg name="enable_sync"           value="true" />

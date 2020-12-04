@@ -8,7 +8,7 @@
   <arg name="cmd_vel_topic" default="yocs_cmd_vel_mux/input/navigation_cmd" />
 
   <!-- move_base -->
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="$(arg log_type)">
+  <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="$(arg log_type)">
     <!-- <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" /> -->
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
     <rosparam file="$(find black_maine_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
