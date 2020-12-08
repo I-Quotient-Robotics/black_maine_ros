@@ -131,7 +131,7 @@ class MqttListener:
       else:
         confirm_list.append("False")
       # print(goal_dist["goal"])
-    if robot_id == "truck_01":
+    if robot_id == self.robot_id:
       self.robot_state = "busy"
       self.SendGoal(robot_id, task_id, goal_list_goal, confirm_list)
     # print(goal_list)

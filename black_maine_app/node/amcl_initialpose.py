@@ -23,10 +23,10 @@ class MqttListener:
 
   def __init__(self):
 
-    self.position_x = rospy.get_param('mqtt_listener/position_x', 0.0)
-    self.position_y = rospy.get_param('mqtt_listener/position_y', 0.0)
-    self.orientation_z = rospy.get_param('mqtt_listener/orientation_z', 0.0)
-    self.orientation_w = rospy.get_param('mqtt_listener/orientation_w', 1.0)
+    self.position_x = rospy.get_param('amcl_init_pose/position_x', 5.8767758004)
+    self.position_y = rospy.get_param('amcl_init_pose/position_y', -1.36629081159)
+    self.orientation_z = rospy.get_param('amcl_init_pose/orientation_z', 0.0)
+    self.orientation_w = rospy.get_param('amcl_init_pose/orientation_w', 1.0)
 
     self.pub_ = rospy.Publisher("/initialpose", geometry_msgs.msg.PoseWithCovarianceStamped, queue_size=10)
     self.twist_pub_ = rospy.Publisher("/cmd_vel", geometry_msgs.msg.Twist, queue_size=10)
