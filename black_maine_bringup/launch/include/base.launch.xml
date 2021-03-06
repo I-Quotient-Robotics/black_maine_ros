@@ -3,9 +3,9 @@
 
   <arg name="log_type" default="screen"/>
 
-  <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager" respawn="true"/>
 
-  <node pkg="nodelet" type="nodelet" name="mobile_base" args="load kobuki_node/KobukiNodelet mobile_base_nodelet_manager">
+  <node pkg="nodelet" type="nodelet" name="mobile_base" args="load kobuki_node/KobukiNodelet mobile_base_nodelet_manager" respawn="true">
     <rosparam file="$(find kobuki_node)/param/base.yaml" command="load"/>
     <param name="publish_tf" value="true"/>
     <remap from="mobile_base/odom" to="odom"/>
@@ -39,7 +39,7 @@
     <arg name="manager"               value="mobile_base_nodelet_manager" />
   </include>
 
-  <node pkg="nodelet" type="nodelet" name="yocs_cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
+  <node pkg="nodelet" type="nodelet" name="yocs_cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager" respawn="true">
     <param name="yaml_cfg_file" value="$(find black_maine_bringup)/config/cmd_vel_mux.yaml" />
     <remap from="yocs_cmd_vel_mux/output/cmd_vel" to="cmd_vel" />
   </node>
