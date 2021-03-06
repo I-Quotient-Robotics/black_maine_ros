@@ -11,5 +11,6 @@
 
   <include file="$(find black_maine_app)/launch/mqtt_listener.launch" />
   <include file="$(find black_maine_app)/launch/amcl_init_pose.launch" />
-
+  
+  <node pkg="black_maine_panel" type="black_maine_panel_node" name="black_maine_panel_node" output="$(arg log_type)" respawn="true"/>
 </launch>
