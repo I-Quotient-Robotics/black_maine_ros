@@ -1,8 +1,3 @@
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-
-#include <functional>
-
 #include <QCoreApplication>
 #include <QTimer>
 #include <QObject>
@@ -17,12 +12,11 @@
 #include <QFuture>
 #include <QFutureWatcher>
 
+#include <functional>
+
 #include "qml_mediator.h"
 
-using namespace std;
-
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     //Init ros stuff
     ros::init(argc, argv, "black_maine_panel_node");
     ros::NodeHandle node;
@@ -32,7 +26,6 @@ int main(int argc, char** argv)
 
     QGuiApplication app(argc, argv);
     QMLMediator mediate(&app);
-    ros::Subscriber sub = node.subscribe("chatter", 1000, &QMLMediator::addString, &mediate);
 
     //Start ros in separate thread, and trigger Qt shutdown when it exits
     //If Qt exits before ros, be sure to shutdown ros

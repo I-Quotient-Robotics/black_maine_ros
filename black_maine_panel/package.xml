@@ -13,6 +13,10 @@
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
 
+  <depend>actionlib</depend>
+  <depend>actionlib_msgs</depend>
+  <depend>black_maine_app</depend>
+
   <export>
   </export>
 </package>

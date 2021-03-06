@@ -8,6 +8,9 @@ add_compile_options(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  actionlib
+  actionlib_msgs
+  black_maine_app
 )
 
 # Find Qt5 libraries

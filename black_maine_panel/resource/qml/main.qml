@@ -24,8 +24,7 @@ ApplicationWindow {
         autoExclusive: false
 
         onPressAndHold: {
-            agv_bridge.confirm()
-            console.info("confirm")
+            mediator.confirm()
         }
     }
 
@@ -39,8 +38,7 @@ ApplicationWindow {
         font.pointSize: 50
 
         onPressAndHold: {
-            agv_bridge.cancel()
-            console.info("cancel")
+            mediator.cancel()
         }
     }
 
@@ -61,14 +59,8 @@ ApplicationWindow {
             anchors.fill: parent
 
             onPressAndHold: {
-                agv_bridge.locate()
-                console.info("locate")
+                mediator.init_pose()
             }
-
-            // onPressAndHold: {
-            //     agv_bridge.reconnect()
-            //     console.info("reconnect")
-            // }
         }
     }
 
@@ -112,7 +104,7 @@ ApplicationWindow {
 
             Text {
                 id: target_text
-                text: qsTr("--")
+                text: mediator.target
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -128,7 +120,7 @@ ApplicationWindow {
             Text {
                 id: log_text
                 height: 50
-                text: qsTr("nothing")
+                text: mediator.result
                 elide: Text.ElideNone
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -140,25 +132,6 @@ ApplicationWindow {
                 color: Material.color(Material.Grey)
             }
         }
-    }
-
-    Connections {
-        target: agv_bridge
-        function onFeedbackUpdate(goal, state) {
-            target_text.text = goal
-            log_text.text = state
-            console.log(goal, state)
-        }
-
-        function onResultUpdate(state) {
-            log_text.text = state
-            target_text.text = "--"
-        }
-    }
-
-    Component.onCompleted: {
-        console.log(agv_bridge.connected())
-        log_text.text = agv_bridge.connected()?"Connected":"Disconnected"
     }
 }
 
