@@ -40,7 +40,7 @@ class MqttListener:
     self.client = mqtt.Client(client_id=self.robot_id)
     self.client.on_connect = self.on_connect
     self.client.on_message = self.on_message
-    self.client.connect("192.168.30.2", 1883, 60)
+    self.client.connect("192.168.31.173", 1883, 60)
 
     self._sub_feedback = rospy.Subscriber("black_maine_distribution_server/feedback", black_maine_app.msg.DistributionActionFeedback, self.FeedbackCallback)
     self._sub = rospy.Subscriber("amcl_pose", geometry_msgs.msg.PoseWithCovarianceStamped, self.AmclPoseCallback)
@@ -92,7 +92,7 @@ class MqttListener:
                        "pose": self.amcl_position, "orientation": self.amcl_orientation, "localization_score":100.0}
       feedback_json = json.dumps(feedback_msg)
       # print(feedback_json)
-      self.client.publish("iqr/usc/robot/state", feedback_json)
+      self.client.publish("iqr/default/robot/state", feedback_json)
       
       # rate.sleep()
       time.sleep(2.0)
@@ -104,9 +104,9 @@ class MqttListener:
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    # self.client.subscribe([("iqr/usc/callbutton/state", 0), ("iqr/usc/agv_manager/state", 0)])
-    self.client.subscribe("iqr/usc/agv_manager/message")
-    self.client.message_callback_add("iqr/usc/agv_manager/message", self.callback)
+    # self.client.subscribe([("iqr/default/callbutton/state", 0), ("iqr/default/agv_manager/state", 0)])
+    self.client.subscribe("iqr/default/agv_manager/message")
+    self.client.message_callback_add("iqr/default/agv_manager/message", self.callback)
     # message_callback_add(sub, callback)
 
   def callback(self, client, userdata, msg):
@@ -160,7 +160,7 @@ class MqttListener:
     feedback_msg = { "robot_id": self.robot_id, "task_id": task_id, "sub_goal": goal, "sub_state": goal_state, "state": 'active'}
     feedback_json = json.dumps(feedback_msg)
     # print(feedback_json)
-    self.client.publish("iqr/usc/task/state", feedback_json)
+    self.client.publish("iqr/default/task/state", feedback_json)
     pass
 
   def ResultCallback(self, msg):
@@ -179,7 +179,7 @@ class MqttListener:
     feedback_msg = { "robot_id": self.robot_id, "task_id": task_id, "sub_goal": 'none', "sub_state": 'none', "state": state}
     feedback_json = json.dumps(feedback_msg)
     # print(feedback_json)
-    self.client.publish("iqr/usc/task/state", feedback_json)
+    self.client.publish("iqr/default/task/state", feedback_json)
     pass
 
   def get_ip_address(self, ifname):

@@ -9,7 +9,7 @@ ApplicationWindow {
     height: 720
     visible: true
     title: qsTr("AGV Panel")
-    // visibility: "FullScreen"
+    visibility: "FullScreen"
 
     Material.theme: Material.Dark
 
@@ -89,7 +89,7 @@ ApplicationWindow {
 
             Text {
                 id: id_text
-                text: qsTr("Truck 01")
+                text: qsTr("Truck 02")
                 anchors.left: parent.left
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignHCenter

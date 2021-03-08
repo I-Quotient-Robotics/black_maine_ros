@@ -5,7 +5,7 @@
   <rosparam file="$(find black_maine_app)/config/black_maine_app.yaml" command="load" />
   <node pkg="black_maine_app" type="distribution_server" name="distribution_server" output="$(arg log_type)" />
   <node pkg="black_maine_app" type="mqtt_listener.py" name="mqtt_listener" output="$(arg log_type)" respawn="true">
-    <param name="robot_id" value="truck_01"/>
+    <param name="robot_id" value="truck_02"/>
     <param name="version" value="1.1.0"/>
   </node>
 </launch>

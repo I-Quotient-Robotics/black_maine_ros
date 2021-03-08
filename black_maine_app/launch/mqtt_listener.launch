@@ -2,7 +2,7 @@
 <launch>
   <arg name="log_type" default="screen"/>
   <node pkg="black_maine_app" type="mqtt_listener.py" name="mqtt_listener" output="$(arg log_type)">
-    <param name="robot_id" value="truck_01"/>
+    <param name="robot_id" value="truck_02"/>
     <param name="version" value="1.1.0"/>
   </node>
 </launch>

@@ -4,7 +4,7 @@
   <arg name="log_type" default="screen"/>
   
   <!-- Arguments -->
-  <arg name="map_file" default="$(find black_maine_navigation)/maps/nanhua.yaml"/>
+  <arg name="map_file" default="$(find black_maine_navigation)/maps/map2.yaml"/>
   <arg name="rviz" default="false"/>
 
   <!-- Map server -->

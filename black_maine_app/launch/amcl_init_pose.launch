@@ -2,9 +2,9 @@
 <launch>
   <arg name="log_type" default="screen"/>
   <node pkg="black_maine_app" type="amcl_initialpose.py" name="amcl_init_pose" output="$(arg log_type)" respawn="true">
-    <param name="position_x" value="6.055"/>
-    <param name="position_y" value="0.165"/>
-    <param name="orientation_z" value="0.999"/>
-    <param name="orientation_w" value="-0.049"/>
+    <param name="position_x" value="24.914"/>
+    <param name="position_y" value="-22.301"/>
+    <param name="orientation_z" value="-0.994"/>
+    <param name="orientation_w" value="0.101"/>
   </node>
 </launch>

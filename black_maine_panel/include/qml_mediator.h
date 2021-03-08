@@ -50,7 +50,7 @@ public:
     feedback_sub_ = nh_.subscribe("/black_maine_distribution_server/feedback", 1000, &QMLMediator::FeedbackHandle, this);
 
     init_pose_client_ = nh_.serviceClient<std_srvs::SetBool>("/init_pose");
-    confirm_client_ = nh_.serviceClient<black_maine_app::Confirmation>("/confirm");
+    confirm_client_ = nh_.serviceClient<black_maine_app::Confirmation>("/confirmation");
     
     setTarget("--");
     setResult("Connected");
@@ -91,7 +91,12 @@ public slots:
   }
 
   void cancel() {
-    ROS_INFO("cancel slot");
+    actionlib_msgs::GoalID cancel_msg;
+    cancel_msg.stamp = ros::Time(0,0);
+    cancel_msg.id = "";
+    cancel_pub_.publish(cancel_msg);
+    ROS_INFO("Cancel all goals");
+    setResult("Cancel goal");
   }
 
   void init_pose() {
